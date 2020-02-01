@@ -1045,7 +1045,7 @@
 // X and Y axis travel speed (mm/m) between probes
 
 // *** Fokusas *** Recomended was 8000, will try 10000 later
-#define XY_PROBE_SPEED 6000
+#define XY_PROBE_SPEED 10000
 
 // Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1062,7 +1062,9 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
+
+// *** Fokusas *** Multiple probes for better accuracy.
+#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
 
 /**
@@ -1092,8 +1094,8 @@
 
 // Enable the M48 repeatability test to test probe accuracy
 
-// *** Fokusas *** Enable repeatability for better accuracy, it this wont work, then enable MULTIPLE_PROBING
-#define Z_MIN_PROBE_REPEATABILITY_TEST
+// *** Fokusas *** Probe Accuracy Test. Manual probe testing for accuracy of probe.
+//#define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1448,7 +1450,9 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing when homing all axes (G28).
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING
+
+// *** Fokusas *** 
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
@@ -1458,8 +1462,8 @@
 // Homing speeds (mm/m)
 
 // *** Fokusas *** Source Marlin ANet Example Header
-#define HOMING_FEEDRATE_XY (100*60)
-#define HOMING_FEEDRATE_Z  (4*60)
+#define HOMING_FEEDRATE_XY (80*60)
+#define HOMING_FEEDRATE_Z  (20*60)
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
